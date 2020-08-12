@@ -1,7 +1,7 @@
 <template>
     <div class="mixer-clip">
             <div class="sound" v-bind:class="{ selected: playing }">
-                <img :src="icon" class="card-img-top" alt="..." @click="onSelected(togglePlayback, playing)" v-bind:class="{ selected: playing }">
+                <img :src="icon" class="card-img-top" alt="..." @click="onSelected(togglePlayback, playing)" v-bind:class="{ selectedClip: playing }">
                 <div class="slider-wrap">
                     <slider
                             min="0"
@@ -77,7 +77,7 @@
         text-align: center;
     }
     .sound > img {
-        opacity: 50%;
+        opacity: 0.5;
         width: 60%;
         margin-left: auto;
         margin-right: auto;
@@ -86,21 +86,21 @@
         border-radius: 20px;
     }
     .sound > img:hover {
-        opacity: 100%;
+        opacity: 1;
         width: 60%;
         margin-left: auto;
         margin-right: auto;
         cursor: pointer;
     }
     .sound > img.selected {
-        opacity: 100%;
+        opacity: 1;
         border: 1px solid white;
     }
     #sound-options > div.row > div:nth-child(1) > div > div > div > div > div.slider__label {
         visibility: hidden !important;
     }
     .slider-ben {
-        opacity: 30%;
+        opacity: 0.3;
         margin-top: 10px;
     }
     .slider-wrap {
@@ -108,6 +108,6 @@
         padding-right: 4em;
     }
     .selected > img {
-        opacity: 100% !important;
+        opacity: 1 !important;
     }
 </style>

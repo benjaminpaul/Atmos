@@ -1,0 +1,9 @@
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/bin/Release/netcoreapp3.1/Atmos.Domain.deps.json
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/bin/Release/netcoreapp3.1/Atmos.Domain.dll
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/bin/Release/netcoreapp3.1/Atmos.Domain.pdb
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/obj/Release/netcoreapp3.1/Atmos.Domain.csprojAssemblyReference.cache
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/obj/Release/netcoreapp3.1/Atmos.Domain.AssemblyInfoInputs.cache
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/obj/Release/netcoreapp3.1/Atmos.Domain.AssemblyInfo.cs
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/obj/Release/netcoreapp3.1/Atmos.Domain.csproj.CoreCompileInputs.cache
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/obj/Release/netcoreapp3.1/Atmos.Domain.dll
+/Users/benpaul/Code/Projects/Atmos/src/Atmos.Domain/obj/Release/netcoreapp3.1/Atmos.Domain.pdb

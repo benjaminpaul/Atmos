@@ -9,6 +9,15 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
 
+  <Target Name="MyPreCompileTarget" BeforeTargets="Build">
+    <Exec Command="sass:prod" />
+</Target>
+<Target Name="MyPreCompileTarget" BeforeTargets="Build">
+<Exec Command="js:prod" />
+        </Target>
+<Target Name="MyPreCompileTarget" BeforeTargets="Open">
+<Exec Command="watch" /></Target>
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.4" />
     <PackageReference Include="VueCliMiddleware" Version="3.1.1" />

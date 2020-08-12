@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Atmos.Domain/1.0.0": {
+        "runtime": {
+          "Atmos.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Atmos.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
