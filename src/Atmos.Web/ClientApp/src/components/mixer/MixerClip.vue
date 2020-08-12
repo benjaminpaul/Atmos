@@ -85,13 +85,6 @@
         background-color: rgba(255, 255, 255, 0.2);
         border-radius: 20px;
     }
-    .sound > img:hover {
-        opacity: 1;
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
-        cursor: pointer;
-    }
     .sound > img.selected {
         opacity: 1;
         border: 1px solid white;
@@ -99,9 +92,16 @@
     #sound-options > div.row > div:nth-child(1) > div > div > div > div > div.slider__label {
         visibility: hidden !important;
     }
+
     .slider-ben {
         opacity: 0.3;
         margin-top: 10px;
+        visibility: hidden;
+    }
+    @media (min-width: 768px) {
+        .slider-ben {
+            visibility: visible;
+        }
     }
     .slider-wrap {
         padding-left: 4em;
