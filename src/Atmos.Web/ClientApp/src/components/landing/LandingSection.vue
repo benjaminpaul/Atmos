@@ -1,7 +1,7 @@
 <template>
     <section id="landing-section">
-        <h2>Your digital place for focus. Mix different sounds and create your perfect sound environment to work and relax.</h2>
-        <p>We provide background sounds that help to mask annoying noises in order to keep you sane, improve your focus and boost your productivity.</p>
+        <h2>{{title}}</h2>
+        <p>{{text}}</p>
         <hr/>
         <div  style="visibility: hidden">
             <a href="#" class="btn btn-outline-light">Sign up for free</a> <a href="#" class="btn btn-link">Give it a little try first?</a>
@@ -10,15 +10,36 @@
 </template>
 
 <script>
+    import { appConfigService} from "../../services/appconfig-service";
+
     export default {
-        name: "LandingSection"
+        name: "LandingSection",
+        components: {
+            
+        },
+        data() {
+            return {
+                title: "",
+                text: ""
+            }
+        },
+        async created() {
+            await this.populateData();
+        },
+        methods: {
+            async populateData() {
+                var t = await appConfigService.getConfig();
+                this.title = t.landingConfig.landingTitle;
+                this.text = t.landingConfig.landingText;
+            }
+        }
     }
 </script>
 
 <style scoped>
     #landing-section {
-        margin-top: 150px;
-        margin-bottom: 75px;
+        margin-top: 100px;
+        margin-bottom: 100px;
     }
     p {
         margin-top: 30px;

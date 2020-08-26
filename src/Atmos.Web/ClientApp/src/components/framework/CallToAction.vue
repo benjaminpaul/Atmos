@@ -28,7 +28,7 @@
         padding: 1em;
         padding-left: 3em;
         padding-right: 3em;
-        background-color: #4DC098;
+        background-color: #437DB0;
         margin-bottom: 2em;
         border-radius: 10px;
         font-weight: normal;
@@ -36,7 +36,7 @@
         z-index: 1000;
     }
     .call-to-action > .arrow {
-        background-color: #4DC098;
+        background-color: #437DB0;
         width: 30px;
         position: absolute;
         height: 30px;

@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/benpaul/Code/Projects/Atmos/tests/Atmos.Web.Tests/Atmos.Web.Tests.csproj",
+    "projectUniqueName": "/Users/ben.paul/Code/Atmos/tests/Atmos.Web.Tests/Atmos.Web.Tests.csproj",
     "projectName": "Atmos.Web.Tests",
-    "projectPath": "/Users/benpaul/Code/Projects/Atmos/tests/Atmos.Web.Tests/Atmos.Web.Tests.csproj",
-    "outputPath": "/Users/benpaul/Code/Projects/Atmos/tests/Atmos.Web.Tests/obj/",
+    "projectPath": "/Users/ben.paul/Code/Atmos/tests/Atmos.Web.Tests/Atmos.Web.Tests.csproj",
+    "outputPath": "/Users/ben.paul/Code/Atmos/tests/Atmos.Web.Tests/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -61,7 +61,7 @@
           "privateAssets": "all"
         }
       },
-      "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
+      "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
     }
   }
 }

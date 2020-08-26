@@ -1,4 +1,5 @@
 using Atmos.Domain.Data;
+using Atmos.Domain.Data.AppConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,7 +25,7 @@ namespace Atmos.Web
         {
             // Register types.
             services.AddTransient<ISoundClipRepository, InMemorySoundClipRepository>();
-            
+            services.AddTransient<IAppConfigRepository, AppConfigRepository>();
             
             services.AddControllersWithViews();
 

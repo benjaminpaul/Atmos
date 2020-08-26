@@ -8,7 +8,7 @@
                             max="100"
                             hideLabel
                             v-model="slider"
-                            class="slider-ben"
+                            class="slider-style"
                     ></slider>
                     
                     <p style="visibility: hidden">{{sliderValueToDecimal}}</p>
@@ -20,7 +20,8 @@
 <script>
     import VueHowler from "vue-howler";
     import Slider from "vue-custom-range-slider";
-    import "vue-custom-range-slider/dist/vue-custom-range-slider.css";
+    
+    import "./MixerClip.scss";
     
     export default {
         name: "MixerClip",
@@ -69,9 +70,12 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    $slider-track-background: red;
+
     .mixer-clip {
         margin-bottom: 1em;
+        cursor: pointer;
     }
     .sound {
         text-align: center;
@@ -93,11 +97,11 @@
         visibility: hidden !important;
     }
 
-    .slider-ben {
+    .slider-style {
         opacity: 0.3;
         margin-top: 10px;
-        visibility: hidden;
     }
+    
     @media (min-width: 768px) {
         .slider-ben {
             visibility: visible;

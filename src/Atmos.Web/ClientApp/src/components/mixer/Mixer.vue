@@ -4,7 +4,7 @@
             <div class="col-12" id="sound-options">
                 <CallToAction text="Try to mix and match the sounds"></CallToAction>
                 <div class="row justify-content-center">
-                    <div class="col-4" v-for="(item) in soundClips" v-bind:key="item.id">
+                    <div class="col-4" v-for="(item) in clips" v-bind:key="item.id">
                         <MixerClip :title="item.title" :description="item.description" :sources="item.audioSources" @playing="onSoundSelected(item)" @stopped="onSoundUnselected(item)" :icon="item.icon" />
                     </div>
                 </div>
@@ -16,55 +16,42 @@
 <script>
     import CallToAction from "../framework/CallToAction";
     import MixerClip from "./MixerClip";
+    import {soundClipsService} from "../../services/soundclips-service";
     export default {
         name: "Mixer",
         components: {
             MixerClip,
             CallToAction
         },
+        async created() {
+            await this.loadClips();
+        },
+        computed: {
+            clips: {
+                get: function () {
+                    return this.soundClips
+                }
+            }
+        },
         data() {
             return {
-                soundClips: [
-                    {
-                        id: "4",
-                        title: 'Rain',
-                        description: "Falling rain",
-                        audioSources: ['rain.mp3'],
-                        icon: require('../../assets/rain.png')
-                    },
-                    {
-                        id: "5",
-                        title: 'Waves',
-                        description: "Ocean Waves",
-                        audioSources: ['waves.mp3'],
-                        icon: require('../../assets/waves.png')
-                    },
-                    {
-                        id: "6",
-                        title: 'Birds',
-                        description: "Birds",
-                        audioSources: ['birds.mp3'],
-                        icon: require('../../assets/birds.png')
-                    },
-                    {
-                        id: "7",
-                        title: 'Wind',
-                        description: "Birds",
-                        audioSources: ['wind.mp3'],
-                        icon: require('../../assets/wind.png')
-                    },
-                    {
-                        id: "7",
-                        title: 'Thunder',
-                        description: "Birds",
-                        audioSources: ['thunder.mp3'],
-                        icon: require('../../assets/thunder.png')
-                    },
-                ],
+                soundClips: [],
                 selectedSoundClips: [],
             }
         },
         methods: {
+            async loadClips() {
+                let clips = await soundClipsService.getSoundClips();
+                this.soundClips = clips.map(x => {
+                    return {
+                        id: x.id,
+                        title: x.title,
+                        description: x.description,
+                        audioSources: [x.fileName],
+                        icon: require(`../../assets/${x.iconFileName}`)
+                    }
+                })
+            },
             onSoundSelected: function (soundClip) {
                 console.log("Sound selected " + soundClip.title);
                 this.selectedSoundClips.push(soundClip);
