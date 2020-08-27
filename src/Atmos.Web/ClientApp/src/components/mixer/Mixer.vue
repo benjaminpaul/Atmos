@@ -16,21 +16,19 @@
 <script>
     import CallToAction from "../framework/CallToAction";
     import MixerClip from "./MixerClip";
-    import {soundClipsService} from "../../services/soundclips-service";
+    
     export default {
         name: "Mixer",
         components: {
             MixerClip,
             CallToAction
         },
-        async created() {
-            await this.loadClips();
+        created() {
+            this.$store.dispatch('loadSoundClips');
         },
         computed: {
-            clips: {
-                get: function () {
-                    return this.soundClips
-                }
+            clips() {
+                return this.$store.state.soundClips;
             }
         },
         data() {
@@ -40,18 +38,6 @@
             }
         },
         methods: {
-            async loadClips() {
-                let clips = await soundClipsService.getSoundClips();
-                this.soundClips = clips.map(x => {
-                    return {
-                        id: x.id,
-                        title: x.title,
-                        description: x.description,
-                        audioSources: [x.fileName],
-                        icon: require(`../../assets/${x.iconFileName}`)
-                    }
-                })
-            },
             onSoundSelected: function (soundClip) {
                 console.log("Sound selected " + soundClip.title);
                 this.selectedSoundClips.push(soundClip);

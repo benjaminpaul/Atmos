@@ -1,8 +1,7 @@
-# Atmos
+## Atmos: The web based atmospheric background sounds mixer
 
-## Atmospheric web based sound mixer
+Atmos is a web based application that allows you to mix and blend a range of atmospheric sound effects to create a soothing and relaxing background when working from home or studying.
 
-Atmos is a small vue / .NET core 3.1 project that provides users with the ability to create their own atmospheric background noises.
+### Tech stack
 
-### Install and run
-Run NPM install from the ClientApp directory of Atmos.Web
+Atmos is developed using .NET Core 3.1 as a backend, serving a frontend built using Vue and VueX.

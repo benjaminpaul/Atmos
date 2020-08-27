@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <AppHeader v-bind:title="appTitle"/>
+    <AppHeader v-bind:title="title"/>
     <div id="app-contents">
         <p v-if="loading">Loading...</p>
       <div class="container" v-if="!loading">
@@ -15,7 +15,6 @@
 import AppHeader from './components/framework/AppHeader';
 import Mixer from "./components/mixer/Mixer";
 import LandingSection from "./components/landing/LandingSection";
-import  { appConfigService } from "./services/appconfig-service";
 
 export default {
   name: 'App',
@@ -30,16 +29,13 @@ export default {
           loading: false
       }
     },
-    async created() {
-      await this.fetchData();
+    created() {
+      this.$store.dispatch('loadConfig');
     },
-    methods: {
-      async fetchData() {
-          this.loading = true;
-          var data = await appConfigService.getConfig();
-          this.loading = false;
-          this.appTitle = data.appTitle;
-      }
+    computed: {
+      title(){
+          return this.$store.state.appConfig.appTitle
+      } 
     }
 }
 </script>

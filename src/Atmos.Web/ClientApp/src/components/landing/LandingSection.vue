@@ -1,7 +1,7 @@
 <template>
     <section id="landing-section">
-        <h2>{{title}}</h2>
-        <p>{{text}}</p>
+        <h2>{{landingTitle}}</h2>
+        <p>{{landingText}}</p>
         <hr/>
         <div  style="visibility: hidden">
             <a href="#" class="btn btn-outline-light">Sign up for free</a> <a href="#" class="btn btn-link">Give it a little try first?</a>
@@ -10,27 +10,17 @@
 </template>
 
 <script>
-    import { appConfigService} from "../../services/appconfig-service";
-
     export default {
         name: "LandingSection",
         components: {
             
         },
-        data() {
-            return {
-                title: "",
-                text: ""
-            }
-        },
-        async created() {
-            await this.populateData();
-        },
-        methods: {
-            async populateData() {
-                var t = await appConfigService.getConfig();
-                this.title = t.landingConfig.landingTitle;
-                this.text = t.landingConfig.landingText;
+        computed: {
+            landingTitle() {
+                return this.$store.state.landingConfig.landingTitle;
+            },
+            landingText() {
+                return this.$store.state.landingConfig.landingText;
             }
         }
     }
@@ -39,7 +29,7 @@
 <style scoped>
     #landing-section {
         margin-top: 100px;
-        margin-bottom: 100px;
+        margin-bottom: 20px;
     }
     p {
         margin-top: 30px;
