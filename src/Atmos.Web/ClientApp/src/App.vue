@@ -6,6 +6,7 @@
       <div class="container" v-if="!loading">
             <LandingSection></LandingSection>
             <Mixer></Mixer>
+            <CreateMix></CreateMix>
       </div>
     </div>
   </div>
@@ -15,13 +16,15 @@
 import AppHeader from './components/framework/AppHeader';
 import Mixer from "./components/mixer/Mixer";
 import LandingSection from "./components/landing/LandingSection";
+import CreateMix from "./components/mixes/CreateMix";
 
 export default {
   name: 'App',
   components: {
     Mixer,
     AppHeader,
-    LandingSection
+    LandingSection,
+      CreateMix
   },
     data() {
       return {
@@ -31,6 +34,7 @@ export default {
     },
     created() {
       this.$store.dispatch('loadConfig');
+      this.$store.dispatch('loadMixes');
     },
     computed: {
       title(){

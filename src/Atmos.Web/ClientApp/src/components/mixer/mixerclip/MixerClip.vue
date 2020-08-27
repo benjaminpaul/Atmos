@@ -21,17 +21,13 @@
     import VueHowler from "vue-howler";
     import Slider from "vue-custom-range-slider";
     
-    import "./MixerClip.scss";
+    import "./style/MixerClip.scss";
     
     export default {
         name: "MixerClip",
         mixins: [VueHowler],
         components: {
             Slider
-        },
-        created() {
-            console.log('Created')
-            this.loop = true;
         },
         props: {
             title: String,
@@ -43,12 +39,10 @@
             onSelected: function() {
                 this.togglePlayback();
                 if (!this.playing) {
-                    console.log('Playing')
                     this.isPlaying = true;
                     this.$emit('playing');
                 } else {
                     this.isPlaying = false;
-                    console.log('Stopped')
                     this.$emit('stopped');
                 }
             }
@@ -56,7 +50,6 @@
         computed: {
             sliderValueToDecimal: function () {
                 let val = parseInt(this.slider).toFixed(2) / 100;
-                console.log(this);
                 this.setVolume(val);
                 return val;
             }

@@ -8,7 +8,8 @@ export const store = new Vuex.Store({
         appTitle: "HELLO WORLD",
         landingConfig: {},
         soundClips: [],
-        appConfig: {}
+        appConfig: {},
+        mixes: []
     },
     mutations: {
         SAVE_APPCONFIG(state, config) {
@@ -25,6 +26,9 @@ export const store = new Vuex.Store({
                     icon: require(`./assets/${x.iconFileName}`)
                 }
             });
+        },
+        SAVE_MIXES(state, mixes) {
+            state.mixes = mixes;
         }
     },
     actions: {
@@ -40,6 +44,13 @@ export const store = new Vuex.Store({
                 commit('SAVE_SOUNDCLIPS', result.data);
             }).catch(error => {
                 throw new Error(`Failed fetching sound clips: ${error}`);
+            })
+        },
+        loadMixes({commit}) {
+            Vue.axios.get("mixes").then(result => {
+                commit('SAVE_MIXES', result.data);
+            }).catch(error => {
+                throw new Error(`Failed fetching mixes: ${error}`);
             })
         }
     }

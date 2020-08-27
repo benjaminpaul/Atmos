@@ -1,6 +1,6 @@
 <template>
     <div class="call-to-action animate__animated animate__pulse animate__delay-2s animate__infinite">
-        <p>{{text}}</p>
+        <p><slot></slot></p>
         <div class="arrow"></div>
     </div>
 </template>

@@ -2,7 +2,7 @@
     <section id="mixer">
         <div class="row">
             <div class="col-12" id="sound-options">
-                <CallToAction text="Try to mix and match the sounds"></CallToAction>
+                <CallToAction>Try to mix and match the sound</CallToAction>
                 <div class="row justify-content-center">
                     <div class="col-4" v-for="(item) in clips" v-bind:key="item.id">
                         <MixerClip :title="item.title" :description="item.description" :sources="item.audioSources" @playing="onSoundSelected(item)" @stopped="onSoundUnselected(item)" :icon="item.icon" />
@@ -10,12 +10,13 @@
                 </div>
             </div>
         </div>
+        <hr/>
     </section>
 </template>
 
 <script>
     import CallToAction from "../framework/CallToAction";
-    import MixerClip from "./MixerClip";
+    import MixerClip from "./mixerclip/MixerClip";
     
     export default {
         name: "Mixer",
@@ -33,7 +34,6 @@
         },
         data() {
             return {
-                soundClips: [],
                 selectedSoundClips: [],
             }
         },
