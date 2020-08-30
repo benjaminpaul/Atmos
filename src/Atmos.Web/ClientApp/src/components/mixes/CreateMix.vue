@@ -12,10 +12,7 @@
                                 <button class="btn btn-lg btn-outline-light" type="submit">Save Mix</button>
                             </div>
                         </div>
-                        <div class="validation-error" v-if="errors.length">
-                            <p>Please correct the following problems</p>
-                            <p class="error-text" v-for="error in errors">{{ error }}</p>
-                        </div>
+                       
                     </div>
                 </form>
             </div>
@@ -24,12 +21,8 @@
 </template>
 
 <script>
-    import CallToAction from "../framework/CallToAction";
     export default {
         name: "CreateMix",
-        components: {
-            CallToAction
-        },
         data() {
             return {
                 errors: [],

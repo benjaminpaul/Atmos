@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { mixStorageService } from "./services/MixStorageService";
 
 Vue.use(Vuex);
 
@@ -9,7 +10,9 @@ export const store = new Vuex.Store({
         landingConfig: {},
         soundClips: [],
         appConfig: {},
-        mixes: []
+        mixes: [],
+        activeMix: null,
+        showMixPanel: false
     },
     mutations: {
         SAVE_APPCONFIG(state, config) {
@@ -29,6 +32,12 @@ export const store = new Vuex.Store({
         },
         SAVE_MIXES(state, mixes) {
             state.mixes = mixes;
+        },
+        SELECT_ACTIVE_MIX(state, mix) {
+            state.activeMix = mix;
+        },
+        SHOW_MIX_PANEL(state, show) {
+            state.showMixPanel = show;
         }
     },
     actions: {
@@ -47,11 +56,16 @@ export const store = new Vuex.Store({
             })
         },
         loadMixes({commit}) {
-            Vue.axios.get("mixes").then(result => {
-                commit('SAVE_MIXES', result.data);
-            }).catch(error => {
-                throw new Error(`Failed fetching mixes: ${error}`);
-            })
+            let storedMixes = mixStorageService.getStoredMixes();
+            commit('SAVE_MIXES', storedMixes);
+        },
+        activateMix({commit}, mix) {
+            commit('SELECT_ACTIVE_MIX', mix);
+        },
+        showMixPanel({commit}, value) {
+            console.log('show')
+            console.log(value)
+            commit('SHOW_MIX_PANEL', value);
         }
     }
 })

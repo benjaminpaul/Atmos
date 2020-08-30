@@ -2,7 +2,7 @@
     <nav class="navbar navbar-dark justify-content-between">
         <div class="container">
             <a class="navbar-brand" href="#">{{title}}</a>
-            <a class="btn btn-outline-light my-2 my-sm-0" href="#">Saved mixes&nbsp;<span class="badge badge-pill badge-light">{{numberOfSavedMixes}}</span></a>
+            <a class="btn btn-outline-light my-2 my-sm-0" href="#" @click="toggleLoadSave">Load / Save</a>
         </div>
     </nav>
 </template>
@@ -13,9 +13,15 @@
         props: {
             title: String
         },
-        computed: {
-            numberOfSavedMixes() {
-                return this.$store.state.mixes.length;
+        data() {
+            return {
+                showPanel: false
+            }
+        },
+        methods: {
+            toggleLoadSave() {
+                this.$store.dispatch('showMixPanel', !this.showPanel);
+                this.showPanel = !this.showPanel;
             }
         }
     }

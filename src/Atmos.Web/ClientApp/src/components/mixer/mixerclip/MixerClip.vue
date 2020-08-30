@@ -3,14 +3,7 @@
             <div class="sound" v-bind:class="{ selected: playing }">
                 <img :src="icon" class="card-img-top" alt="..." @click="onSelected(togglePlayback, playing)" v-bind:class="{ selectedClip: playing }">
                 <div class="slider-wrap">
-                    <slider
-                            min="0"
-                            max="100"
-                            hideLabel
-                            v-model="slider"
-                            class="slider-style"
-                    ></slider>
-                    
+                    <vue-slider v-model="slider" />
                     <p style="visibility: hidden">{{sliderValueToDecimal}}</p>
                 </div>
             </div>
@@ -19,7 +12,8 @@
 
 <script>
     import VueHowler from "vue-howler";
-    import Slider from "vue-custom-range-slider";
+    import VueSlider from 'vue-slider-component'
+    import 'vue-slider-component/theme/antd.css'
     
     import "./style/MixerClip.scss";
     
@@ -27,13 +21,16 @@
         name: "MixerClip",
         mixins: [VueHowler],
         components: {
-            Slider
+            
+            VueSlider
         },
         props: {
             title: String,
             description: String,
             sources: Array,
-            icon: String
+            icon: String,
+            clipPlaying: Boolean,
+            clipvolume: Number
         },
         methods: {
             onSelected: function() {
@@ -48,15 +45,27 @@
             }
         },
         computed: {
-            sliderValueToDecimal: function () {
-                let val = parseInt(this.slider).toFixed(2) / 100;
+            sliderValueToDecimal() {
+                let val = this.slider;
                 this.setVolume(val);
                 return val;
             }
         },
+        watch: {
+            clipPlaying(play) {
+                if (play) {
+                    this.play();
+                    this.slider = this.clipvolume * 100;
+                    this.setVolume(this.clipvolume);
+                } else {
+                    this.stop();
+                    this.slider = this.clipvolume * 100;
+                }
+            }
+        },
         data() {
             return {
-                slider: "50",
+                slider: 50,
                 isPlaying: false
             }
         }
@@ -74,7 +83,7 @@
         text-align: center;
     }
     .sound > img {
-        opacity: 0.5;
+        opacity: 0.2;
         width: 60%;
         margin-left: auto;
         margin-right: auto;
@@ -96,13 +105,19 @@
     }
     
     @media (min-width: 768px) {
-        .slider-ben {
+        .slider-wrap {
             visibility: visible;
         }
     }
     .slider-wrap {
         padding-left: 4em;
         padding-right: 4em;
+        padding-top: 20px;
+        opacity: 0.2;
+        transition: 0.70s;
+    }
+    .selected > .slider-wrap {
+        opacity: 1;
     }
     .selected > img {
         opacity: 1 !important;
